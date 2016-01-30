@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
 import gd from './gender'
-import usr from './user'
-import usrlst from './userlist'
+import {user, userlist} from './user'
 
 const todoApp = combineReducers({
-    user: usr
+    user: user,
+    userlist : userlist
 });
 
 export default todoApp

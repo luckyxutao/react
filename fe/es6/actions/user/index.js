@@ -1,4 +1,4 @@
-import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR, CREATE_USER }from '../../constants/User'
+import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR, CREATE_USER,GET_USER_LIST }from '../../constants/User'
 require('isomorphic-fetch');
 export function setUserName(name) {
     return {
@@ -21,6 +21,12 @@ export function setUserAddr(addr) {
     }
 }
 
+export function getUsers(addr) {
+    return {
+        type: GET_USER_LIST
+    }
+}
+
 export function createUser(usermodel) {
     return (dispatch, getState) => {
         fetch('/users', {
@@ -38,14 +44,6 @@ export function createUser(usermodel) {
             })
             .then(function(stories) {
                 console.log(stories)
-                // dispatch({
-                //     type: CREATE_USER,
-                //     user: usermodel
-                // });
             });
         }
-    // return {
-    //     type: CREATE_USER,
-    //     user: usermodel
-    // }
 }

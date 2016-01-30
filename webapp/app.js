@@ -27,8 +27,14 @@ app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 app.use('/users', users);
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'views', 'index.html'))
+})
+// 的 index.html 中处理任何一个 route
+app.get('/member/*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'views', 'index.html'))
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
