@@ -1,4 +1,4 @@
-import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR, CREATE_USER, GET_USER_LIST } from '../constants/User'
+import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR, CREATE_USER, GET_USER_LIST, SET_USER_LIST, CLEAR_USER } from '../constants/User'
 var initialUser = {
     name : '',
     addr : '',
@@ -14,28 +14,22 @@ export function user(state = initialUser, action) {
             return Object.assign({}, state,{ addr : action.text});
         case CREATE_USER:
             return Object.assign({}, state);
+        case CLEAR_USER:
+            return Object.assign({}, initialUser);
         default:
             return state
     }
 }
 
-var __state = [{
-    "_id": "56ab2af5bbaac72f4053b639",
-    "name": "徐涛",
-    "addr": "北京",
-    "job": "前端",
-    "__v": 0
-}, {
-    "_id": "56ac221971a3044e47d12835",
-    "name": "李翠英",
-    "addr": "河北",
-    "job": "UI",
-    "__v": 0
-}];
-export function userlist(state=__state, action){
+var __statelist = {
+    list : []
+}
+export function userlist(state=__statelist, action){
     switch( action.type ){
         case GET_USER_LIST:
             return state;
+        case SET_USER_LIST:
+            return Object.assign({}, state,{list : action.users});
         default:
         return state;
     }

@@ -1,13 +1,21 @@
 import React from 'react';
 import ComponentUserList from '../components/User/UserList'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { getUsers } from '../actions/user'
-class UserListContainer extends React.Component {
 
+const ACTIVE = { color: 'red' }
+class UserListContainer extends React.Component {
+    componentDidMount() {
+        const { dispatch } = this.props
+        dispatch(getUsers())
+    }
     render(){
         const { userlist } = this.props
         return <section>
-                <ComponentUserList userlist={this.props.userlist} />
+                <span><Link to="/member/create" activeStyle={ACTIVE}>创建</Link></span>
+                <ComponentUserList userlist={ userlist.list} />
             </section>
     }
 }
@@ -17,7 +25,7 @@ function mapStateToProps(state) {
         userlist: state.userlist
     }
 }
-
-export default connect(mapStateToProps, {
-    getUsers
-})(UserListContainer)
+function mapDispatchToProps(dispatch) {
+    return { getUsers, dispatch };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UserListContainer)

@@ -1,11 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import App from './Containers/App'
+import UserListContainer from './Containers/UserListContainer'
 import CreateUserContainer from './Containers/CreateUserContainer'
 
 import todoApp from './reducers/'
@@ -13,11 +12,12 @@ import todoApp from './reducers/'
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(todoApp);
 
+import hist from './history'
 render( <Provider store={store}> 
-          <Router history={createBrowserHistory()}>
+          <Router history={hist}>
             <Route path="/">
               <Route path="member">
-                <IndexRoute component={App}/>
+                <IndexRoute component={UserListContainer}/>
                 <Route path="create" component={CreateUserContainer}/>
               </Route>
             </Route>

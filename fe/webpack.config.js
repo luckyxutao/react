@@ -1,7 +1,8 @@
     var path = require('path');
+    var webpack = require('webpack');
     module.exports = {
         devtool: 'cheap-module-eval-source-map',
-        entry: './es6/index.js',
+        entry: ['./es6/index.js'],
         output: {
             path: __dirname,
             filename: 'bundle.js'
