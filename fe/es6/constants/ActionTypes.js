@@ -1,1 +1,0 @@
-export const SET_USER_DEL = 'SET_USER_DEL'

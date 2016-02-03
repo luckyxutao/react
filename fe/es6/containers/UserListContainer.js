@@ -14,7 +14,7 @@ class UserListContainer extends React.Component {
     render(){
         const { userlist } = this.props
         return <section>
-                <span><Link to="/member/create" activeStyle={ACTIVE}>创建</Link></span>
+                <span><Link to="/member/create" activeStyle={ACTIVE}>创建用户</Link></span>
                 <ComponentUserList userlist={ userlist.list} />
             </section>
     }

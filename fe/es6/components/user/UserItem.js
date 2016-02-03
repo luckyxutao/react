@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 export default class UserItem extends React.Component {
     onDeleteItem(){
         this.props.onDeleteItem(this.props.user.name);
@@ -12,6 +13,7 @@ export default class UserItem extends React.Component {
               <td>{u.name}</td>
               <td>{u.job}</td>
               <td>{u.addr}</td>
+              <td><Link to={"/member/edit/"+ u.uid}>编辑</Link></td>
             </tr>
         );
     }

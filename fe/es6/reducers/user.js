@@ -1,5 +1,6 @@
-import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR, CREATE_USER, GET_USER_LIST, SET_USER_LIST, CLEAR_USER } from '../constants/User'
+import { SET_USER_NAME, SET_USER_JOB, SET_USER_ADDR,UPDATE_USER, CREATE_USER, GET_USER_LIST, SET_USER_LIST, CLEAR_USER } from '../constants/User'
 var initialUser = {
+    uid : '',
     name : '',
     addr : '',
     job : ''
@@ -14,6 +15,9 @@ export function user(state = initialUser, action) {
             return Object.assign({}, state,{ addr : action.text});
         case CREATE_USER:
             return Object.assign({}, state);
+        case UPDATE_USER:
+            var ur = action.user;
+            return Object.assign({}, state, {uid: ur.uid, name : ur.name, job : ur.job, addr: ur.addr});
         case CLEAR_USER:
             return Object.assign({}, initialUser);
         default:

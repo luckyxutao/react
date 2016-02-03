@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import UserListContainer from './Containers/UserListContainer'
 import CreateUserContainer from './Containers/CreateUserContainer'
+import EditUserContainer from './Containers/EditUserContainer'
 
 import todoApp from './reducers/'
 
@@ -19,6 +20,7 @@ render( <Provider store={store}>
               <Route path="member">
                 <IndexRoute component={UserListContainer}/>
                 <Route path="create" component={CreateUserContainer}/>
+                <Route path="edit/:uid" component={EditUserContainer}/>
               </Route>
             </Route>
           </Router>

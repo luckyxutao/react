@@ -1,7 +1,7 @@
 import React from 'react';
 export default class FieldJob extends React.Component {
     handleChange(e){
-        this.props.setUserJob(e.target.value);
+        this.props.onJobChanged(e.target.value);
     }
     render(){
         return  <div className="form-group">

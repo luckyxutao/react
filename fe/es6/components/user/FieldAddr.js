@@ -1,7 +1,7 @@
 import React from 'react';
 export default class FieldAddr extends React.Component {
     handleChange(e){
-        this.props.setUserAddr(e.target.value);
+        this.props.onAddrChanged(e.target.value);
     }
     render(){
         return  <div className="form-group">

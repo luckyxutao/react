@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setUserName, setUserJob, setUserAddr, createUser } from '../actions/user'
+import { setUserName, setUserJob, setUserAddr, updateUser, getUserById } from '../actions/user'
 import BtnSubmit from '../components/user/BtnSubmit'
 import FieldAddr from '../components/user/FieldAddr'
 import FieldJob from '../components/user/FieldJob'
 import FieldName from '../components/user/FieldName'
 
-class CreateUserContainer extends React.Component {
-
+class EditUserContainer extends React.Component {
+    componentDidMount() {
+        const { dispatch, params } = this.props;
+        dispatch(getUserById(params.uid))
+    }
     render(){
         const { onNameChanged, onJobChanged, onAddrChanged, user, onSubmitClick } = this.props;
         return <div className="bs-example" data-example-id="basic-forms">
@@ -26,6 +29,7 @@ function mapStateToProps(state) {
         user: state.user
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatch : dispatch,
@@ -39,8 +43,9 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(setUserName(name));
     },
     onSubmitClick: (usermodel) =>{
-        dispatch(createUser(usermodel));
+        dispatch(updateUser(usermodel));
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CreateUserContainer)
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserContainer)

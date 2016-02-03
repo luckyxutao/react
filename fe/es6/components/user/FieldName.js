@@ -1,7 +1,7 @@
 import React from 'react';
 export default class FieldName extends React.Component {
     handleChange(e){
-        this.props.setUserName(e.target.value);
+        this.props.onNameChanged(e.target.value);
     }
     render(){
         return  <div className="form-group">
